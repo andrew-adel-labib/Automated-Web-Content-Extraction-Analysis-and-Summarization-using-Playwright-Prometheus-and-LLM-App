@@ -10,34 +10,25 @@ from prometheus_client import Counter, Histogram, start_http_server
 from diskcache import Cache
 from dotenv import load_dotenv
 
-# Loading .env variablesi
 load_dotenv()
 
-# Setting up logging
 logging.basicConfig(
     level=os.getenv("LOG_LEVEL", "INFO").upper(),
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
-# Setting up Prometheus metrics
 SCRAPE_ATTEMPTS = Counter("scrape_attempts", "Total scraping attempts")
 SCRAPE_DURATION = Histogram(
     "scrape_duration", "Scraping duration distribution"
 )
 
-# Setting up cache
 cache = Cache("./scraper_cache")
-
-# Custom exceptions
-
 
 class ScrapingError(Exception):
     pass
 
-
 class AnalysisError(Exception):
     pass
-
 
 class AIScraper:
     API_KEY = os.getenv("OPENAI_API_KEY")
@@ -243,3 +234,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
