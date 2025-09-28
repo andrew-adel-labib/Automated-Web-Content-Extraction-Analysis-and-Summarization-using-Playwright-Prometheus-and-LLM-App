@@ -14,8 +14,8 @@ logging.basicConfig(
 )
 
 project_dir = os.path.join(
-    "/home/lakov/projects/llm_engineering",
-    "community-contributions/playwright-bojan"
+    "/home/projects/llms",
+    "playwright-scraper"
 )
 if project_dir not in sys.path:
     sys.path.insert(0, project_dir)
@@ -66,3 +66,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
